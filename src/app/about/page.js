@@ -1,193 +1,163 @@
-"use client";
-import { useState } from "react";
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutPage() {
-  const [activeTimeline, setActiveTimeline] = useState(0);
-
-  const timelineEvents = [
-    {
-      year: "1900s",
-      title: "Early Settlement",
-      description: "Bibiani was established as a small farming community, with early settlers attracted by the fertile land."
-    },
-    {
-      year: "1920s",
-      title: "Gold Discovery",
-      description: "The discovery of gold deposits led to the establishment of mining operations and rapid growth."
-    },
-    {
-      year: "1950s",
-      title: "Municipal Status",
-      description: "Bibiani gained municipal status and became an important administrative center."
-    },
-    {
-      year: "1990s",
-      title: "Modern Development",
-      description: "Infrastructure development and modernization programs transformed the town."
-    },
-    {
-      year: "2020s",
-      title: "Tourism Growth",
-      description: "Focus on sustainable tourism and economic diversification for the future."
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-vb-cream">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-64 bg-gradient-to-r from-vb-green to-vb-gold flex items-center justify-center">
-        <div className="text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">About Bibiani</h1>
-          <p className="text-xl">Discover our rich history and vibrant culture</p>
+      <section className="relative h-[60vh] w-full">
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <Image
+          src="/about/bibiani-hero.jpg"
+          alt="Bibiani landscape"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">About Bibiani</h1>
+          <p className="text-xl md:text-2xl">Land of Culture, Mining, and Opportunity</p>
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Overview Section */}
-        <section className="mb-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="slide-in-left">
-              <h2 className="text-3xl font-bold text-vb-green mb-6">Our Story</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Bibiani has a rich history dating back to the early 20th century when it was established as a mining town. 
-                The discovery of gold in the area led to significant development and growth of the community, transforming 
-                it from a small settlement into a thriving municipal center.
+      {/* History Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-[#006400]">History of Bibiani</h2>
+            <p className="text-gray-700">
+              Bibiani's story begins in the early 20th century with the discovery of gold deposits. 
+              What started as a small mining settlement has grown into a vibrant regional hub, 
+              playing a crucial role in Ghana's economic development.
+            </p>
+            <p className="text-gray-700">
+              The town's strategic location and rich natural resources have made it a center for 
+              trade and industry in the Western North Region. Today, Bibiani stands as a testament 
+              to Ghana's mining heritage while embracing modern development.
+            </p>
+          </div>
+          <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <Image
+              src="/about/history.jpg"
+              alt="Historical Bibiani"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-[#006400] mb-12 text-center">Timeline of Development</h2>
+          <div className="flex overflow-x-auto pb-8 gap-8 snap-x">
+            {[
+              {
+                year: "1900s",
+                title: "Gold Discovery",
+                description: "Initial gold deposits discovered, establishing Bibiani as a mining town"
+              },
+              {
+                year: "1950s",
+                title: "Post-Independence Growth",
+                description: "Expansion of mining operations and infrastructure development"
+              },
+              {
+                year: "2000s",
+                title: "Modern Development",
+                description: "Diversification into agriculture and regional trade"
+              },
+              {
+                year: "Today",
+                title: "Regional Hub",
+                description: "Thriving community with modern amenities and cultural heritage"
+              }
+            ].map((item, index) => (
+              <div key={index} className="min-w-[280px] bg-white p-6 rounded-lg shadow-md snap-center">
+                <span className="text-[#B8860B] font-bold">{item.year}</span>
+                <h3 className="text-xl font-semibold mt-2">{item.title}</h3>
+                <p className="text-gray-600 mt-2">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cultural Identity Section */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-[#006400] mb-12 text-center">Cultural Identity</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              title: "Traditional Music",
+              description: "Rich heritage of drumming and dance traditions",
+              image: "/about/music.jpg"
+            },
+            {
+              title: "Local Crafts",
+              description: "Skilled artisans creating beautiful traditional crafts",
+              image: "/about/crafts.jpg"
+            },
+            {
+              title: "Local Cuisine",
+              description: "Authentic Ghanaian dishes with unique local flavors",
+              image: "/about/food.jpg"
+            },
+            {
+              title: "Festivals",
+              description: "Vibrant celebrations of culture and community",
+              image: "/about/festivals.jpg"
+            }
+          ].map((item, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-[#006400]">{item.title}</h3>
+                <p className="text-gray-600 mt-2">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Western North Region Section */}
+      <section className="bg-[#B8860B] text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold">About Western North Region</h2>
+              <p>
+                The Western North Region is a vital economic zone in Ghana, known for its rich 
+                agricultural resources and natural beauty. As a key producer of cocoa, timber, 
+                and other cash crops, the region plays a crucial role in Ghana's economy.
               </p>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Today, Bibiani stands as the gateway to Ghana's Western North Region, known for its diverse economy, 
-                rich cultural heritage, and warm hospitality. The town continues to grow while preserving its traditional 
-                values and customs.
+              <p>
+                With its strategic location and abundant natural resources, the Western North 
+                Region is emerging as a significant development zone, attracting investment 
+                and fostering sustainable growth.
               </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-white rounded-lg shadow-md">
-                  <div className="text-2xl font-bold text-vb-gold">50,000+</div>
-                  <div className="text-sm text-gray-600">Population</div>
-                </div>
-                <div className="text-center p-4 bg-white rounded-lg shadow-md">
-                  <div className="text-2xl font-bold text-vb-gold">120+</div>
-                  <div className="text-sm text-gray-600">Years of History</div>
-                </div>
-              </div>
             </div>
-            <div className="slide-in-right">
-              <div className="relative h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-vb-green/20 to-vb-gold/20 flex items-center justify-center">
-                  <span className="text-6xl">🏛️</span>
-                </div>
-              </div>
+            <div className="relative h-[400px] rounded-lg overflow-hidden">
+              <Image
+                src="/about/region-map.jpg"
+                alt="Western North Region Map"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Timeline Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-vb-green text-center mb-12">Historical Timeline</h2>
-          <div className="max-w-4xl mx-auto">
-            {/* Timeline Navigation */}
-            <div className="flex justify-center mb-8 overflow-x-auto pb-2">
-              <div className="flex gap-2 min-w-max">
-                {timelineEvents.map((event, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTimeline(index)}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                      activeTimeline === index
-                        ? 'bg-vb-green text-white shadow-lg'
-                        : 'bg-white text-vb-green border border-vb-green hover:bg-vb-green hover:text-white'
-                    }`}
-                  >
-                    {event.year}
-                  </button>
-                ))}
-              </div>
-            </div>
 
-            {/* Timeline Content */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 fade-in">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-vb-green mb-2">
-                  {timelineEvents[activeTimeline].year}
-                </h3>
-                <h4 className="text-xl font-semibold text-vb-gold mb-4">
-                  {timelineEvents[activeTimeline].title}
-                </h4>
-                <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                  {timelineEvents[activeTimeline].description}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Culture & Traditions */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-vb-green text-center mb-12">Culture & Traditions</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card hover-lift">
-              <div className="p-6 text-center">
-                <div className="text-4xl mb-4">🎭</div>
-                <h3 className="text-xl font-semibold text-vb-green mb-3">Traditional Festivals</h3>
-                <p className="text-gray-600">
-                  Experience vibrant festivals like the Eluo Festival that celebrate our rich cultural heritage.
-                </p>
-              </div>
-            </div>
-            <div className="card hover-lift">
-              <div className="p-6 text-center">
-                <div className="text-4xl mb-4">🎵</div>
-                <h3 className="text-xl font-semibold text-vb-green mb-3">Music & Dance</h3>
-                <p className="text-gray-600">
-                  Traditional drumming and dance performances that tell the stories of our ancestors.
-                </p>
-              </div>
-            </div>
-            <div className="card hover-lift">
-              <div className="p-6 text-center">
-                <div className="text-4xl mb-4">🏺</div>
-                <h3 className="text-xl font-semibold text-vb-green mb-3">Arts & Crafts</h3>
-                <p className="text-gray-600">
-                  Local artisans create beautiful pottery, textiles, and wood carvings using traditional techniques.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Geography & Location */}
-        <section>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="relative h-80 bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-vb-green/20 to-vb-gold/20 flex items-center justify-center">
-                  <span className="text-6xl">🗺️</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-vb-green mb-6">Strategic Location</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Bibiani is strategically located in Ghana's Western North Region, serving as a crucial link between 
-                major cities and rural communities. The town's position makes it an ideal hub for trade, tourism, 
-                and economic development.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-vb-gold text-xl">📍</span>
-                  <span className="text-gray-700">Western North Region, Ghana</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-vb-gold text-xl">🌡️</span>
-                  <span className="text-gray-700">Tropical climate with two distinct seasons</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-vb-gold text-xl">🌳</span>
-                  <span className="text-gray-700">Rich forest reserves and natural resources</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
+    </main>
   );
-}
+} 

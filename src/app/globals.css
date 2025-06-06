@@ -6,16 +6,12 @@
   --vb-green: #006400;
   --vb-gold: #B8860B;
   --vb-cocoa: #7B3F00;
-  --vb-cream: #FDF6E3;
-  --vb-light-green: #228B22;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -29,114 +25,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Custom scrollbar */
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Parallax effect */
-.parallax {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Animation classes */
-.fade-in {
-  animation: fadeIn 0.6s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.slide-in-left {
-  animation: slideInLeft 0.8s ease-out;
-}
-
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-.slide-in-right {
-  animation: slideInRight 0.8s ease-out;
-}
-
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* Hover effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Custom utilities */
+/* Example Tailwind override for primary color */
 @layer utilities {
   .bg-vb-green { background-color: var(--vb-green); }
   .bg-vb-gold { background-color: var(--vb-gold); }
   .bg-vb-cocoa { background-color: var(--vb-cocoa); }
-  .bg-vb-cream { background-color: var(--vb-cream); }
-  .bg-vb-light-green { background-color: var(--vb-light-green); }
-  
   .text-vb-green { color: var(--vb-green); }
   .text-vb-gold { color: var(--vb-gold); }
   .text-vb-cocoa { color: var(--vb-cocoa); }
-  .text-vb-cream { color: var(--vb-cream); }
-  .text-vb-light-green { color: var(--vb-light-green); }
-  
-  .border-vb-green { border-color: var(--vb-green); }
-  .border-vb-gold { border-color: var(--vb-gold); }
-  
-  .gradient-overlay {
-    background: linear-gradient(135deg, rgba(0, 100, 0, 0.8) 0%, rgba(184, 134, 11, 0.6) 100%);
-  }
-  
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-}
-
-/* Card styles */
-.card {
-  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300;
-}
-
-.card:hover {
-  @apply shadow-xl transform -translate-y-1;
-}
-
-/* Button styles */
-.btn-primary {
-  @apply bg-vb-green text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-vb-light-green transition-all duration-300 transform hover:scale-105;
-}
-
-.btn-secondary {
-  @apply bg-vb-gold text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105;
-}
-
-.btn-outline {
-  @apply border-2 border-vb-green text-vb-green px-6 py-3 rounded-full font-semibold hover:bg-vb-green hover:text-white transition-all duration-300;
 }
