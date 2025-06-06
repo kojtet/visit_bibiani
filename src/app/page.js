@@ -5,11 +5,13 @@ import WelcomeSection from "./components/WelcomeSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col">
       <Hero />
-      <QuickNav />
-      <EventsCarousel />
-      <WelcomeSection />
+      <div className="bg-vb-cream">
+        <QuickNav />
+        <EventsCarousel />
+        <WelcomeSection />
+      </div>
     </div>
   );
 }
